@@ -242,3 +242,9 @@ button:focus {
     margin: 10px 0;
   }
 }
+
+@media screen and (max-height:559px) {
+  .problem {
+    overflow: visible;
+  }
+}
