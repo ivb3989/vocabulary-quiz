@@ -81,10 +81,7 @@ let questions = [
   },
 ];
 
-/* let uniques = chance
-  .unique(chance.natural, 10, { min: 1, max: questions.length - 1 })
-  .map((x) => (x !== 7 ? x : Math.floor(Math.random() * 7))); */
-  let uniques = Array(questions.length - 1).fill().map((_, index) => index + 1).sort(() => Math.random() - 0.5).slice(0, 10).map((x) => (x !== 7 ? x : Math.floor(Math.random() * 7)));
+  let uniques = Array(questions.length - 1).fill().map((_, index) => index + 1).sort(() => Math.random() - 0.5).slice(0, 10);
 
 
 let index = 0;
@@ -231,7 +228,7 @@ $(document).ready(function () {
   function resetGame() {
     console.log(state.wrongAnswers);
     index = 0;
-    uniques = Array(questions.length - 1).fill().map((_, index) => index + 1).sort(() => Math.random() - 0.5).slice(0, 10).map((x) => (x !== 7 ? x : Math.floor(Math.random() * 7)));
+    uniques = Array(questions.length - 1).fill().map((_, index) => index + 1).sort(() => Math.random() - 0.5).slice(0, 10);
     state.questionsLeft = 10;
     state.wrongAnswers = 0;
 
