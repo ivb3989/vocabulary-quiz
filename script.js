@@ -1,4 +1,4 @@
-var questions = [
+let questions = [
   {
     question: "everybody",
     answer: "всі",
@@ -29,7 +29,7 @@ var questions = [
   },
   {
     question: "tree",
-    correct: "дерево",
+    answer: "дерево",
   },
   {
     question: "to run",
