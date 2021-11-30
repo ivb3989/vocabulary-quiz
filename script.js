@@ -1,4 +1,4 @@
-let questions = [
+var pre_intermediate = [
   {
     question: "everybody",
     answer: "всі",
@@ -81,10 +81,100 @@ let questions = [
   },
 ];
 
-  let uniques = Array(questions.length - 1).fill().map((_, index) => index + 1).sort(() => Math.random() - 0.5).slice(0, 10);
+let intermediate = [
+  {
+    question: "influence",
+    answer: "вплив",
+  },
+  {
+    question: "willpower",
+    answer: "сила волі",
+  },
+  {
+    question: "inclusivity",
+    answer: "інклюзивність",
+  },
+  {
+    question: "friskiness",
+    answer: "грайливість",
+  },
+  {
+    question: "fortune",
+    answer: "фортуна",
+  },
+  {
+    question: "to exchange",
+    answer: "обмінювати",
+  },
+  {
+    question: "to define",
+    answer: "визначити",
+  },
+  {
+    question: "to align",
+    answer: "вирівняти",
+  },
+  {
+    question: "essential",
+    answer: "суттєвий",
+  },
+  {
+    question: "distinguished",
+    answer: "видатний",
+  },
+];
 
+let advanced = [
+  {
+    question: "to disparage",
+    answer: "принизити",
+  },
+  {
+    question: "equivocation",
+    answer: "двозначність",
+  },
+  {
+    question: "glib",
+    answer: "гладкий",
+  },
+  {
+    question: "to incise",
+    answer: "надрізати",
+  },
+  {
+    question: "ossified",
+    answer: "бездушний",
+  },
+  {
+    question: "outlawry",
+    answer: "поза законом",
+  },
+  {
+    question: "perch",
+    answer: "окунь",
+  },
+  {
+    question: "plumber",
+    answer: "сантехнік",
+  },
+  {
+    question: "prodigy",
+    answer: "вундеркінд",
+  },
+  {
+    question: "boor",
+    answer: "хам",
+  },
+];
+
+let uniques = Array(pre_intermediate.length - 1)
+  .fill()
+  .map((_, index) => index + 1)
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 10);
 
 let index = 0;
+let questions = null;
 
 $(document).ready(function () {
   // Variable Declarations
@@ -98,6 +188,7 @@ $(document).ready(function () {
   const $statement = $(".statement");
   const $gameStatus = $(".game-status");
   const $reset = $(".overlay button");
+  const $launch = $(".launch-window");
 
   $userAnswer.focus();
 
@@ -141,6 +232,7 @@ $(document).ready(function () {
     $answer.text(q.answer);
     console.log(q);
     ++index;
+    return questions;
   }
 
   function updateStatement() {
@@ -228,7 +320,11 @@ $(document).ready(function () {
   function resetGame() {
     console.log(state.wrongAnswers);
     index = 0;
-    uniques = Array(questions.length - 1).fill().map((_, index) => index + 1).sort(() => Math.random() - 0.5).slice(0, 10);
+    uniques = Array(questions.length - 1)
+      .fill()
+      .map((_, index) => index + 1)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 10);
     state.questionsLeft = 10;
     state.wrongAnswers = 0;
 
@@ -239,6 +335,8 @@ $(document).ready(function () {
     $statement.html(
       `You have ${state.questionsLeft} questions to answer<br>and ${state.wrongAnswers} wrongs.`
     );
+    $bg.addClass("blur");
+    $launch.removeClass("hid");
     updateQuestion();
 
     $userAnswer.focus();
@@ -247,9 +345,31 @@ $(document).ready(function () {
   // Events
   $form.on("submit", formSub);
   $reset.on("click", resetGame);
+  $bg.addClass("blur");
+  $launch.removeClass("hid");
   $(".wrapper").flip({ trigger: "manual" });
-  // Function Calls
-  console.log(uniques);
-  shuffle(questions);
-  updateQuestion();
+  $('input[name="radio"][value="pre_intermediate"]').click(() => {
+    questions = pre_intermediate;
+    updateQuestion();
+    $bg.removeClass("blur");
+    $launch.addClass("hid");
+    console.log(uniques);
+    shuffle(questions);
+  });
+  $('input[name="radio"][value="intermediate"]').click(() => {
+    questions = intermediate;
+    updateQuestion();
+    $bg.removeClass("blur");
+    $launch.addClass("hid");
+    console.log(uniques);
+    shuffle(questions);
+  });
+  $('input[name="radio"][value="advanced"]').click(() => {
+    questions = advanced;
+    updateQuestion();
+    $bg.removeClass("blur");
+    $launch.addClass("hid");
+    console.log(uniques);
+    shuffle(questions);
+  });
 });
