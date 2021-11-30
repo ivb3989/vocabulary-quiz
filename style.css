@@ -50,12 +50,13 @@ body {
   from {
     opacity: 0.2;
     transform: scale(0.3);
-/*     filter: blur(10px); */
+    /*     filter: blur(10px); */
   }
+
   to {
     opacity: 1;
     transform: scale(1);
-/*     filter: blur(0px); */
+    /*     filter: blur(0px); */
   }
 }
 
@@ -63,6 +64,7 @@ body {
   from {
     filter: blur(0px) saturate(1);
   }
+
   to {
     filter: blur(5px) saturate(0.1);
   }
@@ -99,7 +101,6 @@ body {
 
 .question,
 .answer {
-  font-size: 35px;
   font-weight: 900;
   line-height: 1;
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -189,7 +190,8 @@ button:focus {
   transition: transform 0.2s ease-in-out;
 }
 
-.overlay {
+.overlay,
+.launch-window {
   position: fixed;
   background: rgba(0, 0, 0, 0.3);
   width: 100vw;
@@ -221,19 +223,21 @@ button:focus {
 }
 
 #card {
-  transform-style: preserve-3d;  
-  transition: all 0.3s;               
+  transform-style: preserve-3d;
+  transition: all 0.3s;
   -webkit-transition: all 0.3s;
 }
 
-.flipped, .back {
+.flipped,
+.back {
   transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg); 
+  -webkit-transform: rotateY(180deg);
 }
 
-.front, .back {
-  text-align: center;   
-  backface-visibility: hidden;       
+.front,
+.back {
+  text-align: center;
+  backface-visibility: hidden;
 }
 
 @media screen and (max-width:632px) {
@@ -247,4 +251,30 @@ button:focus {
   .problem {
     overflow: visible;
   }
+}
+
+.card {
+	display: flex;
+	flex-direction: column;	
+	background: #FDFBFB;
+	width: 300px;
+	padding: 20px 25px;
+	border-radius: 20px;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.13);
+  color: #082943;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+label:hover {
+  color: #2196F3;
+}
+
+input[type=radio] {
+  margin-right: 10px;
 }
