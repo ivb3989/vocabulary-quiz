@@ -243,7 +243,6 @@ button:focus {
 @media screen and (max-width:632px) {
   body {
     justify-content: start;
-    margin: 10px 0;
   }
 }
 
